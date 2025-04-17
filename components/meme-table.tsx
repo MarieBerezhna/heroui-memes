@@ -12,7 +12,7 @@ import {
 import { Key, useCallback, useState } from "react";
 
 import { EditIcon } from "./icons";
-import MemeModal from "./mememodal";
+import MemeModal from "./meme-modal";
 import LikesCountChip from "./likes-count-chip";
 
 import { Meme } from "@/types";

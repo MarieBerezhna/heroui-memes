@@ -1,4 +1,4 @@
-import MemeCard from "./memecard";
+import MemeCard from "./meme-card";
 
 import { useMemes } from "@/hooks/useMemes";
 

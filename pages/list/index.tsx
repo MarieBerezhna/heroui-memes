@@ -1,4 +1,4 @@
-import MemesList from "@/components/memelist";
+import MemesList from "@/components/meme-list";
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 

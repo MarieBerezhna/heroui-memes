@@ -1,4 +1,4 @@
-import MemeTable from "@/components/memetable";
+import MemeTable from "@/components/meme-table";
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 
