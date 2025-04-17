@@ -5,7 +5,6 @@ import {
   TableColumn,
   TableRow,
   TableCell,
-  Chip,
   Tooltip,
   Button,
   useDisclosure,
@@ -14,6 +13,7 @@ import { Key, useCallback, useState } from "react";
 
 import { EditIcon } from "./icons";
 import MemeModal from "./mememodal";
+import LikesCountChip from "./likes-count-chip";
 
 import { Meme } from "@/types";
 import { useMemes } from "@/hooks/useMemes";
@@ -40,11 +40,7 @@ export default function MemeTable() {
       case "imageUrl":
         return <a href={meme.imageUrl}>{meme.imageUrl}</a>;
       case "likes":
-        return (
-          <Chip className="capitalize" color="primary" size="sm" variant="flat">
-            {meme.likes}
-          </Chip>
-        );
+        return <LikesCountChip count={meme.likes} />;
       case "actions":
         return (
           <div className="relative flex items-center gap-2">

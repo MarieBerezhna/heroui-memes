@@ -3,12 +3,11 @@ import {
   CardFooter,
   Image,
   Button,
-  Chip,
   CardHeader,
   CardBody,
 } from "@heroui/react";
 
-import { HeartIcon } from "./icons";
+import LikesCountChip from "./likes-count-chip";
 
 import { Meme } from "@/types";
 
@@ -35,18 +34,7 @@ export default function MemeCard({ meme }: { meme: Meme }) {
         </CardBody>
 
         <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-          <Chip
-            className="capitalize"
-            color="default"
-            radius="sm"
-            size="sm"
-            variant="solid"
-          >
-            <div className="flex align-center gap-1">
-              <HeartIcon />
-              <span>{meme.likes}</span>
-            </div>
-          </Chip>
+          <LikesCountChip count={meme.likes} />
           <Button
             className="text-tiny text-white"
             color="secondary"
