@@ -12,6 +12,11 @@ import {
 import { useState } from "react";
 
 import { Meme } from "@/types";
+import {
+  isValidImageUrl,
+  isValidLikes,
+  isValidName,
+} from "@/utils/input-validation";
 
 type MemeModalProps = {
   isOpen?: boolean;
@@ -30,7 +35,11 @@ export default function MemeModal({
   const [updated, setUpdated] = useState<Meme>(meme);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [inputErrors, setInputErrors] = useState({
+    name: false,
+    imageUrl: false,
+    likes: false,
+  });
   const handleSave = () => {
     try {
       setError(null);
@@ -52,6 +61,45 @@ export default function MemeModal({
     }
   };
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isValid = isValidName(e.target.value);
+
+    if (!isValid) {
+      setInputErrors({ ...inputErrors, name: true });
+      setError("Name must be between 3 and 100 characters");
+
+      return;
+    }
+    setUpdated({ ...updated, name: e.target.value });
+  };
+
+  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const url = e.target.value;
+    const isValid = isValidImageUrl(url);
+
+    if (!isValid) {
+      setInputErrors({ ...inputErrors, imageUrl: true });
+      setError("Invalid URL. Please enter a full external JPG URL.");
+
+      return;
+    }
+
+    setUpdated({ ...updated, imageUrl: url });
+  };
+
+  const handleLikesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const isValid = isValidLikes(Number(value));
+
+    if (!isValid) {
+      setInputErrors({ ...inputErrors, likes: true });
+      setError("Likes must be a number greater than 0 and less than 100");
+
+      return;
+    }
+    setUpdated({ ...updated, likes: Number(value) });
+  };
+
   const modalInner = (
     <>
       <ModalBody>
@@ -64,7 +112,7 @@ export default function MemeModal({
           type="text"
           value={updated.name}
           variant="bordered"
-          onChange={(e) => setUpdated({ ...meme, name: e.target.value })}
+          onChange={handleNameChange}
         />
         <Input
           label="Url"
@@ -72,7 +120,7 @@ export default function MemeModal({
           type="url"
           value={updated.imageUrl}
           variant="bordered"
-          onChange={(e) => setUpdated({ ...meme, imageUrl: e.target.value })}
+          onChange={handleUrlChange}
         />
         <Input
           label="Likes"
@@ -80,9 +128,7 @@ export default function MemeModal({
           type="number"
           value={updated.likes.toString()}
           variant="bordered"
-          onChange={(e) =>
-            setUpdated({ ...meme, likes: Number(e.target.value) })
-          }
+          onChange={handleLikesChange}
         />
         {error && <p className="text-red-500">{error}</p>}
       </ModalBody>
