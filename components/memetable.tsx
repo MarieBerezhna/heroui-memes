@@ -27,9 +27,10 @@ export const columns = [
 ];
 
 export default function MemeTable() {
-  const { memes } = useMemes();
+  const { memes, updateMeme } = useMemes();
   const { onOpenChange } = useDisclosure();
   const [selected, setSelected] = useState<Meme | null>(null);
+
   const renderCell = useCallback((meme: Meme, columnKey: Key) => {
     switch (columnKey) {
       case "id":
@@ -88,6 +89,7 @@ export default function MemeTable() {
         <MemeModal
           isOpen
           meme={selected}
+          updateMeme={updateMeme}
           onClose={() => setSelected(null)}
           onOpenChange={onOpenChange}
         />
