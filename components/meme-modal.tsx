@@ -8,6 +8,7 @@ import {
   Input,
   Chip,
   Spinner,
+  Alert,
 } from "@heroui/react";
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ export default function MemeModal({
 }: MemeModalProps) {
   const [updated, setUpdated] = useState<Meme>(meme);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [inputErrors, setInputErrors] = useState({
     name: false,
@@ -47,6 +49,7 @@ export default function MemeModal({
 
       setTimeout(() => {
         setLoading(false);
+        setSuccess(true);
       }, 1500);
 
       updateMeme(updated);
@@ -160,6 +163,16 @@ export default function MemeModal({
               <Spinner
                 classNames={{ label: "text-foreground mt-4" }}
                 variant="wave"
+              />
+            </div>
+          </ModalBody>
+        )}
+        {success && (
+          <ModalBody>
+            <div key="success" className="w-full flex items-center my-3">
+              <Alert
+                color="success"
+                title="Well done! All changes were saved :)"
               />
             </div>
           </ModalBody>
