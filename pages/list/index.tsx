@@ -1,3 +1,4 @@
+import MemesList from "@/components/memelist";
 import { title } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 
@@ -8,6 +9,7 @@ export default function ListPage() {
         <div className="inline-block max-w-lg text-center justify-center">
           <h1 className={title()}>List</h1>
         </div>
+        <MemesList />
       </section>
     </DefaultLayout>
   );

@@ -224,3 +224,44 @@ export const EditIcon = (props: IconSvgProps) => {
     </svg>
   );
 };
+
+export const HeartIcon = (props: IconSvgProps) => (
+  <svg
+    height="16"
+    id="圖層_1"
+    preserveAspectRatio="xMidYMid"
+    // style="margin: initial; display: block; shape-rendering: auto; background: rgb(255, 255, 255);"
+    version="1.1"
+    viewBox="0 0 100 100"
+    width="16"
+    x="0"
+    xmlSpace="preserve"
+    xmlns="http://www.w3.org/2000/svg"
+    y="0"
+    {...props}
+  >
+    <g
+      className="ldl-scale"
+      // style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);"
+    >
+      <g className="ldl-ani">
+        <g className="ldl-layer">
+          <g
+            className="ldl-ani"
+            opacity={1}
+            // transformOrigin="50px 50px"
+            transform="matrix3d(0.91, 0, 0, 0, 0, 0.91, 0, 0, 0, 0, 0.91, 0, 0, 0, 0, 1)"
+            // style="opacity: 1; transform-origin: 50px 50px; transform: matrix3d(0.91, 0, 0, 0, 0, 0.91, 0, 0, 0, 0, 0.91, 0, 0, 0, 0, 1); animation: 1s linear -1s infinite normal forwards running animate; transform-box: view-box;"
+          >
+            <path
+              d="M90 34.613a21.48 21.48 0 0 0-.451-4.378c-2.021-9.724-10.635-17.032-20.959-17.032-4.43 0-8.545 1.346-11.96 3.65A21.505 21.505 0 0 0 50 24.019a21.505 21.505 0 0 0-6.63-7.166 21.311 21.311 0 0 0-11.96-3.65c-10.324 0-18.938 7.308-20.959 17.032A21.48 21.48 0 0 0 10 34.613c0 .328.022.651.037.975-.002.159-.012.315-.012.474C10.025 58.179 50 86.797 50 86.797s39.975-28.618 39.975-50.734c0-.159-.01-.316-.012-.474.015-.325.037-.648.037-.976z"
+              fill="#ed1e79"
+              // style="stroke-width: 1; fill: rgb(237, 30, 121);"
+              strokeWidth={1}
+            />
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
